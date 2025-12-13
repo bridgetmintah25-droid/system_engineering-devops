@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Display running processes in user-oriented format (USER COMMAND, 30 chars max per line)
-ps -eo user,command --no-headers | awk '{ printf "%-10s %-30.30s\n", $1, $2 }'
+# A Bash script that displays a comprehensive list of all currently running processes
+ps -eo user,pid,pcpu,pmem,vsz,rss,tty,stat,command --forest
+
