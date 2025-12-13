@@ -1,36 +1,15 @@
 #!/usr/bin/env bash
-# Script to check properties of a file named 'school'
-
 FILE="school"
 
-# Check for existence
-if [ -e "$FILE" ]; then
-    echo "'$FILE' file exists"
-    
-    # Further checks if the file exists
-    if [ -f "$FILE" ]; then
-        echo "'$FILE' is a regular file"
-    else
-        echo "'$FILE' is not a regular file"
-    fi
-    
-    if [ -r "$FILE" ]; then
-        echo "'$FILE' is readable"
-    else
-        echo "'$FILE' is not readable"
-    fi
-    
-    if [ -w "$FILE" ]; then
-        echo "'$FILE' is writable"
-    else
-        echo "'$FILE' is not writable"
-    fi
-    
-    if [ -s "$FILE" ]; then
-        echo "'$FILE' is not empty"
-    else
-        echo "'$FILE' is empty"
-    fi
+if [ ! -e "$FILE" ]; then
+    echo "$FILE doesn't exist"
 else
-    echo "'$FILE' file does not exist"
+    if [ -d "$FILE" ]; then
+        echo "$FILE exists but it's a directory"
+    elif [ -f "$FILE" ]; then
+        echo "File exist and is a regular file"
+        if [ ! -s "$FILE" ]; then
+            echo "$FILE exists but empty"
+        fi
+    fi
 fi
