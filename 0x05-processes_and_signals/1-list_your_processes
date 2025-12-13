@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-# Custom formatted process list with hierarchy
-ps -eo user,start_time,command --forest | awk '{print $1" "$2" "$3" "$4}'
+# Bash script that lists all processes in "USER COMMAND" format with hierarchy
+ps -eo user,command --forest
