@@ -1,5 +1,5 @@
 #!/usr/bin/env bash.
 #This is displaying 10 Best School
 for item in list; do
-      echo head " Best School"
+      ls -la 10 "Best School"
         done
