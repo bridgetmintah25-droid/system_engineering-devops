@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-# Bash script that lists all processes in "USER COMMAND" format with hierarchy
-ps -eo user,command --forest
+# Script that outputs "USER COMMAND" with full command line and hierarchy
+ps -eo user,args --forest
