@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Script to display non-hidden filenames in the current directory, showing only the part after the first dash using a for loop
+
+for file in *; do
+  if [[ ! "$file" == .* ]]; then
+    name=${file#*-}
+    echo "$name"
+  fi
+done
