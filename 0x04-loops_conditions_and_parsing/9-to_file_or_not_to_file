@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
-FILE="school"
+This is to check if is to file or not to file
 
-if [ ! -e "$FILE" ]; then
-    echo "$FILE doesn't exist"
-else
-    if [ -d "$FILE" ]; then
-        echo "$FILE exists but it's a directory"
-    elif [ -f "$FILE" ]; then
-        echo "File exist and is a regular file"
-        if [ ! -s "$FILE" ]; then
-            echo "$FILE exists but empty"
-        fi
-    fi
-fi
+import os
+
+filename = 'school'
+
+# Check for existence
+if os.path.exists(filename):
+    print('school file exists')
+    
+    # Further checks if the file exists
+    if os.path.getsize(filename) == 0:
+        print('school file is empty')
+    else:
+        print('school file is not empty')
+        
+    if os.path.isfile(filename):
+        print('school is a regular file')
+else:
+    print('school file does not exist')
