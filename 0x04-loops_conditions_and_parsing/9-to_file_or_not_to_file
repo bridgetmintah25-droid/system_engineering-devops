@@ -1,18 +1,36 @@
-import os
+#!/usr/bin/env bash
+# Script to check properties of a file named 'school'
 
-filename = 'school'
+FILE="school"
 
 # Check for existence
-if os.path.exists(filename):
-    print('school file exists')
+if [ -e "$FILE" ]; then
+    echo "'$FILE' file exists"
     
     # Further checks if the file exists
-    if os.path.getsize(filename) == 0:
-        print('school file is empty')
-    else:
-        print('school file is not empty')
-        
-    if os.path.isfile(filename):
-        print('school is a regular file')
-else:
-    print('school file does not exist')
+    if [ -f "$FILE" ]; then
+        echo "'$FILE' is a regular file"
+    else
+        echo "'$FILE' is not a regular file"
+    fi
+    
+    if [ -r "$FILE" ]; then
+        echo "'$FILE' is readable"
+    else
+        echo "'$FILE' is not readable"
+    fi
+    
+    if [ -w "$FILE" ]; then
+        echo "'$FILE' is writable"
+    else
+        echo "'$FILE' is not writable"
+    fi
+    
+    if [ -s "$FILE" ]; then
+        echo "'$FILE' is not empty"
+    else
+        echo "'$FILE' is empty"
+    fi
+else
+    echo "'$FILE' file does not exist"
+fi
