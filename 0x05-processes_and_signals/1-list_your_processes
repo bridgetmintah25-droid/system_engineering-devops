@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
-# A Bash script that displays a comprehensive list of all currently running processes with user-oriented format and hierarchy
-ps -eo user,pid,pcpu,pmem,vsz,rss,tty,stat,command --forest
+A Bash script that displays a comprehensive list of all currently running processes with user-oriented format and hierarchy
+
+ps -eo user,pid,pcpu,pmem,vsz,rss,tty,stat,command --forest | awk '
+BEGIN { printf "%-10s %-6s %-6s %-6s %-8s %-8s %-6s %-5s %s\n", "USER", "PID", "%CPU", "%MEM", "VSZ", "RSS", "TTY", "STAT", "COMMAND" }
+{ print }
+'
