@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# A Bash script that stops the 7-highlander process
+
+PID=$(pgrep -f 7-highlander)
+if [ -n "$PID" ]; then
+  kill "$PID"
+  echo "Process $PID signaled"
+else
+  echo "Process not found"
+fi
+
+#!/usr/bin/env bash
+# A Bash script that displays "To infinity and beyond" and handles SIGTERM
+
+trap 'echo "I am invincible!!!"' SIGTERM
+
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
