@@ -1,20 +1,27 @@
-#!/usr/bin/env bash
-# A Bash script that runs an infinite "7-highlander" process or stops it with a "stop" argument
-if [ "$1" = "stop" ]; then
-  # Stop the process
-  PID=$(pgrep -f '7-highlander')
-  if [ -n "$PID" ]; then
-    kill "$PID"
-    echo "Process $PID stopped"
-  else
-    echo "Process not found"
-  fi
-else
-  # Run the process
-  trap 'echo "I am invincible!!!"; exit' SIGTERM
-  echo "Running 7-highlander..."
-  while true; do
-    echo "To infinity and beyond"
-    sleep 1 & wait $!
-  done
-fi
+#!/usr/bin/env python3
+# A Python script that runs an infinite "7-highlander" process or stops it with a "stop" argument
+import signal
+import sys
+import time
+import os
+
+def signal_handler(sig, frame):
+    # Handle SIGTERM signal by printing a message and exiting
+    print("I am invincible!!!")
+    sys.exit(0)
+
+if len(sys.argv) > 1 and sys.argv[1] == "stop":
+    # Stop the process
+    pid = os.popen("pgrep -f '7-highlander'").read().strip()
+    if pid:
+        os.kill(int(pid), signal.SIGTERM)
+        print(f"Process {pid} stopped")
+    else:
+        print("Process not found")
+else:
+    # Run the process
+    signal.signal(signal.SIGTERM, signal_handler)
+    print("Running 7-highlander...")
+    while True:
+        print("To infinity and beyond")
+        time.sleep(2)
