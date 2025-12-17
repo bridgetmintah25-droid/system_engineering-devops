@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
-# A Bash script that displays "To infinity and beyond" and handles SIGTERM
-trap 'echo "OK"' SIGTERM
-while true; do
-  echo "To infinity and beyond"
-  sleep 2
-done
 
+# A Bash script that can run the 7-highlander process or stop it
 
-#!/usr/bin/env bash
-# A Bash script that stops the 7-highlander process
-PID=$(pgrep -f 7-highlander)
-if [ -n "$PID" ]; then
-  kill "$PID"
+if [ "$1" = "stop" ]; then
+  # Stop the process
+  PID=$(pgrep -f 7-highlander)
+  if [ -n "$PID" ]; then
+    kill "$PID"
+    echo "Process $PID stopped"
+  else
+    echo "Process not found"
+  fi
 else
-  echo "Process not found"
+  # Run the process
+  trap 'echo "I am invincible!!!"' SIGTERM
+  echo "Running 7-highlander..."
+  while true; do
+    echo "To infinity and beyond"
+    sleep 2
+  done
 fi
