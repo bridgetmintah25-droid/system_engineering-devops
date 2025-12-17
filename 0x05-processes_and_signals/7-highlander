@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # A Bash script that runs an infinite "7-highlander" process or stops it with a "stop" argument
-
 if [ "$1" = "stop" ]; then
   # Stop the process
   PID=$(pgrep -f '7-highlander')
@@ -12,7 +11,7 @@ if [ "$1" = "stop" ]; then
   fi
 else
   # Run the process
-  trap 'echo "I am invincible!!!"' SIGTERM
+  trap 'echo "I am invincible!!!" ; exit' SIGTERM
   echo "Running 7-highlander..."
   while true; do
     echo "To infinity and beyond"
