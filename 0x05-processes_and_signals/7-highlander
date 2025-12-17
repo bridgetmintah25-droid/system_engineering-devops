@@ -1,16 +1,10 @@
 #!/usr/bin/env bash
-# A Bash script that prints a message indefinitely and handles SIGTERM
+# This script displays 'To infinity and beyond' 
+# Expectations: In between each iteration of the loop, add a sleep 2
 
-# Function to handle SIGTERM
-term_handler() {
-    echo "I am invincible!!!"
-}
-
-# Trap SIGTERM and call term_handler
-trap term_handler SIGTERM
-
-# Infinite loop
-while true; do
-    echo "To infinity and beyond indefinitely."
+trap 'echo "I am invincible!!!"' SIGTERM
+while true
+do
+    echo "To infinity and beyond"
     sleep 2
 done
