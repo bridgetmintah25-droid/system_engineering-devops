@@ -11,10 +11,10 @@ if [ "$1" = "stop" ]; then
   fi
 else
   # Run the process
-  trap 'echo "I am invincible!!!" ; exit' SIGTERM
+  trap 'echo "I am invincible!!!"; exit' SIGTERM
   echo "Running 7-highlander..."
   while true; do
     echo "To infinity and beyond"
-    sleep 2
+    sleep 1 & wait $!
   done
 fi
